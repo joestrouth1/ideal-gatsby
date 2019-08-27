@@ -21,13 +21,12 @@ const Link: React.FC<{
   [x: string]: any
 }> = ({ children, to, activeClassName, partiallyActive, ...other }) => {
   const { allSitePage } = useStaticQuery(internalPageQuery)
-  console.log({ allSitePage })
-  const paths: Array<string | undefined> = allSitePage.nodes.map(
-    node => node.path
+  const paths: Array<string | undefined> = allSitePage.nodes.map(node =>
+    node.path.replace(/\/$/, '')
   )
-  console.log({ paths, to })
 
-  const internal = paths.includes(to)
+  // normalize by removing trailing slashes from `to` and all page paths
+  const internal = paths.includes(to.replace(/\/$/, ''))
 
   // Use Gatsby Link for internal links, and <a> for others
   if (internal) {
@@ -48,5 +47,7 @@ const Link: React.FC<{
     </a>
   )
 }
+
+Link.displayName = 'WrappedLink'
 
 export default Link

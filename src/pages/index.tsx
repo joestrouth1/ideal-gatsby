@@ -32,6 +32,7 @@ const IndexPage = () => (
       <p className="leading-normal mb-4">Now go build something great.</p>
       <Image className="mb-8" />
       <Link to="/page-2/">Go to page 2</Link>
+      <Link to="/">Go to page 2</Link>
       <Link to="/page-2">Go to page 2</Link>
       <Link to="/page-3/">Go to page 2</Link>
       <Link to="/page-3">Go to page 2</Link>
